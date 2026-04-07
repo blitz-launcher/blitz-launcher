@@ -349,43 +349,29 @@ benchmark_percentiles=99,95,90,50,25,5,1  # Перцентили для бенч
         # Полная конфигурация со всеми метриками, включая gamemode и vsync
         if extended:
             env["MANGOHUD_CONFIG"] = (
-                # Основные
                 "fps,frametime,"
-                # Загрузка
                 "cpu_stats,gpu_stats,"
-                # Температура
                 "cpu_temp,gpu_temp,"
-                # Память
                 "ram,vram,"
-                # Частоты
                 "cpu_mhz,gpu_core_clock,gpu_mem_clock,"
-                # Статусы
                 "gamemode,vsync,"
-                # Драйверы
                 "wine,vulkan_driver,"
-                # Другое
                 "resolution,frame_timing,power"
             )
         else:
             # Базовая конфигурация
             env["MANGOHUD_CONFIG"] = "fps,frametime,cpu_stats,gpu_stats,cpu_temp,gpu_temp,ram,vram,gamemode,vsync"
         
-        # Позиция оверлея
         env["MANGOHUD_POSITION"] = "top-right"
         
-        # Размер шрифта
         env["MANGOHUD_FONT_SIZE"] = "20"
         
-        # Включаем обводку текста
         env["MANGOHUD_CONFIG"] += ",text_outline"
         
-        # Включаем табличный формат
         env["MANGOHUD_CONFIG"] += ",table"
         
-        # Принудительно включаем отображение Gamemode
         env["MANGOHUD_GAMEMODE"] = "1"
         
-        # Включаем отображение VSync
         env["MANGOHUD_VSYNC"] = "1"
         
         print(f"✅ MangoHud включен (расширенный режим: {extended})")
@@ -1098,15 +1084,10 @@ class UMUInstallWorker(QThread):
             with tarfile.open(tmp_path, 'r:*') as tar:
                 members = tar.getmembers()
                 for member in members:
-                    # Разбиваем путь внутри архива на части
                     parts = Path(member.name).parts
-                    
-                    # Если файл внутри папки (длина пути > 1), отрезаем первый уровень
                     if len(parts) > 1:
-                        # Создаем новый путь без первой папки (umu-launcher-1.4.0/)
                         member.name = str(Path(*parts[1:]))
                         tar.extract(member, path=self.umu_dir)
-                    # Если файл в корне архива и это не папка, извлекаем как есть
                     elif not member.isdir():
                         tar.extract(member, path=self.umu_dir)
 
@@ -1288,7 +1269,6 @@ class UMUManager:
 
         env = {}
 
-        # Добавляем дополнительные переменные из GameDetailsPage (MangoHud и т.д.)
         if extra_env:
             env.update(extra_env)
             if extra_env.get("MANGOHUD") == "1":
@@ -1367,7 +1347,6 @@ class UMUManager:
                 if hasattr(parent, 'all_games_page'):
                     for game in parent.all_games_page.model.games:
                         if game.get('id') == game_id:
-                            # Сохраняем history_id в карточке
                             pass
             return process
         except Exception as e:
