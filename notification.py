@@ -13,7 +13,6 @@ from icon_factory import IconFactory
 
 
 class Notification(QFrame):
-    """Steam-like popup notification with slide and fade animations."""
 
     def __init__(
         self,
@@ -35,14 +34,12 @@ class Notification(QFrame):
         self._life_timer = QTimer(self)
         self._life_timer.setSingleShot(True)
         self._life_timer.timeout.connect(self.hide_animated)
-        # QSS не умеет box-shadow; тень делаем через QGraphicsDropShadowEffect.
         shadow = QGraphicsDropShadowEffect(self)
         shadow.setBlurRadius(18)
         shadow.setOffset(0, 6)
         shadow.setColor(QColor(0, 0, 0, 140))
         self.setGraphicsEffect(shadow)
 
-        # Для прозрачности используем windowOpacity (без конфликтов с graphicsEffect).
         self.setWindowOpacity(0.0)
 
         self._action_callback = action_callback
@@ -185,7 +182,6 @@ class Notification(QFrame):
         out_group.start()
 
     def mousePressEvent(self, event):
-        # В Steam попапы закрываются по клику.
         self.hide_animated()
         event.accept()
 
