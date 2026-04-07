@@ -257,7 +257,6 @@ QFrame#steam_notification {
     border: 1px solid #30363d;
     border-left: 3px solid #58a6ff;
     border-radius: 10px;
-    /* box-shadow в QSS обычно не поддерживается, поэтому реальная тень делается в notification.py через QGraphicsDropShadowEffect */
     box-shadow: 0px 10px 26px rgba(0, 0, 0, 0.35);
 }
 
