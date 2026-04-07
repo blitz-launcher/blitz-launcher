@@ -1066,7 +1066,6 @@ class UMUInstallWorker(QThread):
         super().__init__()
         self.umu_dir = umu_dir
         self.umu_run = umu_dir / "umu-run"
-        # Ссылка на версию 1.4.0
         self.umu_url = "https://github.com/Open-Wine-Components/umu-launcher/releases/download/1.4.0/umu-launcher-1.4.0-zipapp.tar"
 
     def run(self):
