@@ -61,19 +61,6 @@ class DXVKVersionFetcher:
     def get_download_url(version: str) -> str:
         return f"https://github.com/doitsujin/dxvk/releases/download/v{version}/dxvk-{version}.tar.gz"
 
-
-# ============================================================
-# SYSTEM CHECKER
-# ============================================================
-
-import os
-import sys
-import shutil
-import subprocess
-import re
-from pathlib import Path
-from typing import Optional
-
 # ============================================================
 # SYSTEM CHECKER
 # ============================================================
