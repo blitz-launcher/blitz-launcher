@@ -1,6 +1,6 @@
 # ⚡ Blitz Launcher (Alpha)
 
-Легкий лаунчер на Python 3.14 + PySide6 для Arch Linux.
+Легкий лаунчер на Python 3.14 + PySide6.
 
 ### Фишки:
 - Управление версиями Proton
