@@ -75,7 +75,7 @@ def load_application_fonts() -> bool:
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Blitz")
+        self.setWindowTitle("Blitz Launcher")
         self.setMinimumSize(1000, 700)
         self.setStatusBar(None)
         
@@ -220,7 +220,7 @@ class MainWindow(QMainWindow):
         sidebar_layout.setContentsMargins(0, 0, 0, 0)
         sidebar_layout.setSpacing(0)
         
-        logo = QLabel("BLITZ")
+        logo = QLabel("BLITZ LAUNCHER")
         logo.setObjectName("logo")
         sidebar_layout.addWidget(logo)
         
